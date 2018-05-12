@@ -1,0 +1,152 @@
+
+<!--Section: Intro-->
+            <section class="mt-lg-5">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!-- noval !-->
+                    <div class="col-lg-4 col-md-4">
+
+                        <!--Section: Basic Info-->
+                        <section class="card card-cascade card-avatar mb-4">
+
+                            <img src="{{user.picture}}" alt="">
+
+                            <!--Card content-->
+                            <div class="card-body">
+                                <!--Title-->
+                                <h4 class="card-title"><strong>{{user.name}}</strong></h4>
+                                <h5>Web designer at <a href="">TELKOM University</a></h5>
+                                <p class="dark-grey-text">Bandung, Jawa Barat</p>
+
+                                <!-- Social -->
+                                <a type="button" class="btn-floating btn-small transparent waves-effect waves-light"><i class="fa fa-facebook dark-grey-text"></i></a>
+                                <a type="button" class="btn-floating btn-small transparent waves-effect waves-light"><i class="fa fa-twitter dark-grey-text"></i></a>
+                                <a type="button" class="btn-floating btn-small transparent waves-effect waves-light"><i class="fa fa-linkedin dark-grey-text"></i></a>
+
+                                <!--Text-->
+                                <p class="card-text mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.
+                                </p>
+                                <button type="button" class="btn btn-info btn-rounded btn-sm waves-effect waves-light" ui-sref="profile_setting">Ubah Profil<i class="fa fa-pencil ml-2"></i></button>
+                            </div>
+
+                        </section>
+                        <!--Section: Basic Info-->
+
+                        <!--Section: Achievements-->
+                        <section class="card mb-4">
+                            <div class="card-body text-center">
+
+                                <h5><strong>John's Achievements</strong></h5>
+
+                                <hr class="my-3">
+
+                                <button type="button" class="btn btn-light-blue btn-rounded btn-sm px-3 waves-effect waves-light" data-toggle="modal" data-target="#modalAchievment">Bootstrap Master</button>
+                                <button type="button" class="btn btn-blue-grey btn-rounded btn-sm px-3 waves-effect waves-light" data-toggle="modal" data-target="#modalAchievment">WordPress Master</button>
+                                <button type="button" class="btn btn-default btn-rounded btn-sm px-3 waves-effect waves-light" data-toggle="modal" data-target="#modalAchievment">Angular Master</button>
+                                <button type="button" class="btn btn-secondary btn-rounded btn-sm px-3 waves-effect waves-light" data-toggle="modal" data-target="#modalAchievment">MDB Expert</button>
+                                <button type="button" class="btn btn-deep-purple btn-rounded btn-sm px-3 waves-effect waves-light" data-toggle="modal" data-target="#modalAchievment">Community contributor</button>
+                                <button type="button" class="btn btn-indigo btn-rounded btn-sm px-3 waves-effect waves-light" data-toggle="modal" data-target="#modalAchievment">MDB Pro User</button>
+                            </div>
+                        </section>
+                        <!--Section: Achievements-->
+
+                        <!--Section: Experience-->
+                        <section class="card mb-4">
+                            <div class="card-body">
+
+                                <h5 class="text-center mb-4"><strong>John's Contributions </strong></h5>
+
+                                <ul class="list-unstyled pt-4">
+                                    <li>
+                                        <p>Questions <span class="badge badge-primary pull-right">14</span></p>
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        <p>Answers <span class="badge badge-primary pull-right">14</span></p>
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        <p>Submited projects <span class="badge badge-primary pull-right">14</span></p>
+                                    </li>
+                                    <hr>
+                                    <li>
+                                        <p>Pull requests <span class="badge badge-primary pull-right">14</span></p>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </section>
+                        <!--Section: Experience-->
+
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="tabs-wrapper">
+                            <ul class="nav classic-tabs tabs-blue" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link waves-light waves-effect waves-light active" data-toggle="tab" href="#panel36" role="tab" aria-selected="true">Buat Kompetisi</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link waves-light waves-effect waves-light" data-toggle="tab" href="#panel37" role="tab" aria-selected="false">Kompetisi Yang Di Ikuti</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="tab-content card">
+                            <!--Panel 1-->
+                            <div class="tab-pane fade in active show" id="panel36" role="tabpanel">
+                                
+                                <p>Ingin membuat administrasi kompetisi secara online ? <button class="btn blue-gradient btn-rounded waves-effect waves-light pull-right" ui-sref="competition_create"><i class="fa fa-plus"></i> Buat Kompetisi</button></p>
+                                <br/>
+                                <ul class="list-group z-depth-1">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="media">
+                                    <a class="media-left waves-light waves-effect waves-light">
+                                        <img class="rounded-circle" src="https://mdbootstrap.com/img/Photos/Avatars/avatar-13.jpg" alt="Generic placeholder image" style="width:63px">
+                                    </a>
+                                    <div class="media-body ml-3">
+                                        <h5 class="media-heading font-weight-bold">SISFOTIME</h5>
+                                        <p>Peserta : 25, Dimulai : 25 juni 2017, Selesai : 23 maret 2018</p>
+                                    </div>
+                                    </div>
+                                    <a class="btn btn-primary btn-sm" ui-sref="competition_dashboard">Kelola</a>
+                                </li>
+                                 <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="media">
+                                    <a class="media-left waves-light waves-effect waves-light">
+                                        <img class="rounded-circle" src="https://mdbootstrap.com/img/Photos/Avatars/avatar-13.jpg" alt="Generic placeholder image" style="width:63px">
+                                    </a>
+                                    <div class="media-body ml-3">
+                                        <h5 class="media-heading font-weight-bold">SISFOTIME</h5>
+                                        <p>Peserta : 25, Dimulai : 25 juni 2017, Selesai : 23 maret 2018</p>
+                                    </div>
+                                    </div>
+                                    <a class="btn btn-primary btn-sm" ui-sref="competition_dashboard">Kelola</a>
+                                </li>
+                                
+                            </ul>
+                            </div>
+                            <!--/.Panel 1-->
+                            <!--Panel 2-->
+                            <div class="tab-pane fade" id="panel37" role="tabpanel">
+                                <p>Ingin mengikuti berbagai kejuaran online ?.</p>
+                                <p>Explore kompetisi sekarang juga</p>
+                                <button class="btn blue-gradient btn-rounded waves-effect waves-light pull-right" ui-sref="competition_explore"><i class="fa fa-users"></i> Explore Kompetisi</button>
+                            </div>
+                            <!--/.Panel 2-->
+
+                            <!--/.Panel 4-->
+                        </div>
+                    </div>
+                    <!-- noval !-->
+
+                </div>
+                <!--Grid row-->
+
+            </section>
+            <!--Section: Intro-->
+
+
