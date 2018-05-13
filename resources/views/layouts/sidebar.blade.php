@@ -48,6 +48,12 @@
     @endif
     @if (Auth::user()->role == 'Committee')
       <li class="nav-item">
+        <a class="nav-link" href="{{route('contest.committee.mine')}}">
+          <span class="menu-title">My Competition</span>
+          <i class="icon-speedometer menu-icon"></i>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{route('contest.create')}}">
           <span class="menu-title">Create</span>
           <i class="icon-speedometer menu-icon"></i>

@@ -35,6 +35,14 @@ class ContestController extends Controller
         ]);
     }
 
+    public function myCommitteeContest()
+    {
+        $contests = Contest::where('id_committee', Auth::user()->id)->paginate(15);
+        return view('contest.index',[
+          'contests' => $contests
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

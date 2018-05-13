@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
   Route::resource('contest','ContestController');
   Route::put('timeline/{contest}','ContestController@updateTimeline')->name('contest.timeline');
   Route::get('mycontest','ContestController@myContest')->name('contest.mine');
+  Route::get('mycontest','ContestController@myCommitteeContest')->name('contest.committee.mine');
 
   // Participant Routes
   Route::get('join/{contest}', 'ContestController@join')->name('contest.join');
