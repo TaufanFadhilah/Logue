@@ -1,7 +1,7 @@
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper">
-    <a class="navbar-brand brand-logo" href="../../index.html"><img src="{{asset('images/logo.png')}}" alt="logo"></a>
-    <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="{{asset('images/logo_short.png')}}" alt="logo"></a>
+    <a class="navbar-brand brand-logo" href="{{route('landingpage')}}"><img src="{{asset('images/logo.png')}}" alt="logo"></a>
+    <a class="navbar-brand brand-logo-mini" href="{{route('landingpage')}}"><img src="{{asset('images/logo_short.png')}}" alt="logo"></a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center">
     <p class="page-name d-none d-lg-block">Hi, {{Auth::user()->name}}</p>

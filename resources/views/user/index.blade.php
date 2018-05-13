@@ -25,7 +25,7 @@
                   <td>{{$user->user->phone}}</td>
                   <td>
                     @if ($user->user->role == 'Member')
-                      <form action="{{route('user.change.committee',['user' => $user->id])}}" method="post">
+                      <form action="{{route('user.change.committee',['user' => $user->user->id])}}" method="post">
                         @csrf
                         @method('put')
                         <button type="submit" class="btn btn-success">Change to Committee</button>
