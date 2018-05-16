@@ -5,7 +5,7 @@
       {!! $contest->timeline !!}
     </div>
   </div>
-  @if (Auth::user()->role == "Committee")
+  @if (Auth::user()->id == $contest->id_committee)
     <div class="col-md-12">
       <hr>
       <form action="{{route('contest.timeline', ['contest' => $contest->id])}}" method="post">

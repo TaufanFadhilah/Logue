@@ -35,7 +35,7 @@
                   @include('contest.detail')
                 </div>
                 <div class="tab-pane fade" id="nav-bracket" role="tabpanel" aria-labelledby="nav-bracket-tab">
-                  @if (Auth::user()->role == "Committee")
+                  @if (Auth::user()->id == $contest->id_committee)
                       @include('contest.bracket')
                     @else
                       @include('contest.bracket_member')
