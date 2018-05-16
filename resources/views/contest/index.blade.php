@@ -17,7 +17,7 @@
               <div class="col-md-6">
                 <a href="{{route('contest.show',['contest' => $contest->id])}}" class="btn btn-primary full-width">Show</a>
               </div>
-              @if (Auth::user()->role == "Committee")
+              @if (Auth::user()->id == $contest->id_committee)
                 <div class="col-md-6">
                   <form action="{{route('contest.destroy', ['contest' => $contest->id])}}" method="post">
                     @csrf

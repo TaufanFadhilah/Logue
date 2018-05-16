@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\User;
 use App\CommitteeList;
 use Auth;
 use Storage;
+use DB;
+use Validator;
 class UserController extends Controller
 {
 
@@ -35,7 +38,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
           'name' => 'required|string|max:255',
           'email' => 'required|string|email|max:255|unique:users',
-          'password' => 'required|string|min:6|confirmed',
+          'password' => 'required|string|min:6',
           'gender' => 'required|string',
           'birthday' => 'required|date',
           'phone' => 'required',
@@ -94,7 +97,7 @@ class UserController extends Controller
       $user->address = $request->address;
       $user->photo = $path;
       $user->save();
-      return response()->json('success');
+      return response()->json($user);
     }
 
     public function updateSecurity(Request $request)
@@ -111,7 +114,7 @@ class UserController extends Controller
 
     public function all()
     {
-      return response()->json(CommitteeList::all());
+      return response()->json(CommitteeList::with('user')->get());
     }
 
     public function changeCommittee(User $user)
@@ -119,7 +122,7 @@ class UserController extends Controller
       $user->role = 'Committee';
       $user->save();
       CommitteeList::where('user_id', $user->id)->delete();
-      return response()->json('success');
+      return response()->json($user);
     }
 
     public function beCommittee(User $user)
@@ -130,6 +133,6 @@ class UserController extends Controller
           'user_id' => $user->id
         ]);
       }
-      return response()->json('success');
+      return response()->json($user);
     }
 }

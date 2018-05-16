@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <h2>Participants</h2>
-      @if (Auth::user()->role != "Committee" && $contest->type == "Team")
+      @if (Auth::user()->role != "Admin" && $contest->type == "Team" && count($registered) != 0)
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           Add your team member

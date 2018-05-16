@@ -25,19 +25,22 @@ Route::get('/', function () {
 });
 Route::group(['middleware' => 'auth:api'], function(){
   // USER ROUTES
-  Route::get('/profile', function () {
-      return view('auth.profile');
-  })->name('profile');
+  Route::get('profile', 'API\UserController@details');
 
-  Route::put('profile','API\UserController@updateProfile')->name('profile.update');
-  Route::put('security','API\UserController@updateSecurity')->name('profile.security.update');
+  Route::post('profile','API\UserController@updateProfile')->name('profile.update');
+  Route::post('security','API\UserController@updateSecurity')->name('profile.security.update');
   Route::get('users','API\UserController@all')->name('users');
-  Route::put('changeCommittee/{user}','API\UserController@changeCommittee')->name('user.change.committee');
+  Route::post('changeCommittee/{user}','API\UserController@changeCommittee')->name('user.change.committee');
   Route::post('beCommittee/{user}', 'API\UserController@beCommittee')->name('user.be.committee');
 
   // CONTESTS ROUTES
-  Route::resource('contest','API\ContestController');
-  Route::put('timeline/{contest}','API\ContestController@updateTimeline')->name('contest.timeline');
+  // Route::resource('contest','API\ContestController');
+  Route::get('contest', 'API\ContestController@all');
+  Route::post('contest', 'API\ContestController@store');
+  Route::get('contest/{contest}', 'API\ContestController@show');
+  Route::post('updateContest', 'API\ContestController@update');
+  Route::get('deleteContest/{contest}', 'API\ContestController@destroy');
+  Route::post('timeline','API\ContestController@updateTimeline')->name('contest.timeline');
   Route::get('mycontest','API\ContestController@myContest')->name('contest.mine');
 
   // Participant Routes

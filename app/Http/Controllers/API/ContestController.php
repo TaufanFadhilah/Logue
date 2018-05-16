@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Participant;
 use App\ParticipantDetail;
 use App\Bracket;
@@ -19,7 +20,7 @@ class ContestController extends Controller
      */
     public function index()
     {
-        return response()->json(Contest::all());
+        return response()->json(Contest::with('participants')->get());
     }
 
     public function myContest()
@@ -51,7 +52,7 @@ class ContestController extends Controller
     {
         $poster = Storage::disk('public')->put('contests', $request->poster);
 
-        Contest::create([
+        $contest = Contest::create([
           'name' => $request->name,
           'id_committee' => $request->id_committee,
           'category' => $request->category,
@@ -65,7 +66,7 @@ class ContestController extends Controller
           'desc' => $request->desc,
           'timeline' => 'no timeline'
         ]);
-        return response()->json('success');
+        return response()->json($contest);
     }
 
     /**
@@ -76,12 +77,14 @@ class ContestController extends Controller
      */
     public function show(Contest $contest)
     {
-        $registered = Participant::where([
-          ['user_id', Auth::user()->id],
-          ['contest_id', $contest->id]
-          ])->get();
+        // $registered = Participant::where([
+        //   ['user_id', Auth::user()->id],
+        //   ['contest_id', $contest->id]
+        //   ])->get();
+        //
+        // return response()->json($registered);
 
-        return response()->json($registered);
+        return response()->json($contest);
     }
 
     /**
@@ -102,8 +105,9 @@ class ContestController extends Controller
      * @param  \App\Contest  $contest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contest $contest)
+    public function update(Request $request)
     {
+        $contest = Contest::where('id',$request->id)->first();
         if ($request->poster) {
           $poster = Storage::disk('public')->put('contests', $request->poster);
         }else {
@@ -121,7 +125,7 @@ class ContestController extends Controller
         $contest->poster = $poster;
         $contest->save();
 
-        return response()->json('success');
+        return response()->json($contest);
     }
 
     /**
@@ -133,23 +137,24 @@ class ContestController extends Controller
     public function destroy(Contest $contest)
     {
         $contest->delete();
-        return response()->json('success');
+        return response()->json($contest);
     }
 
-    public function updateTimeline(Request $request, Contest $contest)
+    public function updateTimeline(Request $request)
     {
+      $contest = Contest::where('id', $request->id)->first();
       $contest->timeline = $request->timeline;
       $contest->save();
-      return response()->json('success');
+      return response()->json($contest);
     }
 
     public function join(Contest $contest)
     {
-      Participant::create([
+      $participant = Participant::create([
         'user_id' => Auth::user()->id,
         'contest_id' => $contest->id
       ]);
-      return response()->json('success');
+      return response()->json($participant);
     }
 
     public function addMember(Request $request)
@@ -158,18 +163,12 @@ class ContestController extends Controller
         ['contest_id', $request->contest_id],
         ['user_id', $request->user_id],
         ])->first();
-      ParticipantDetail::create([
+      $participant_detail = ParticipantDetail::create([
         'participant_id' => $participant_id->id,
         'name' => $request->name,
         'email' => $request->email
       ]);
-      return response()->json('success');
-    }
-
-    public function addBracket(Request $request)
-    {
-      Bracket::create($request->all());
-      return response()->json('success');
+      return response()->json($participant_detail);
     }
 
     public function changeBracket(Request $request, Contest $contest)
