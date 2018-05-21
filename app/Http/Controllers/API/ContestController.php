@@ -25,10 +25,16 @@ class ContestController extends Controller
 
     public function myContest()
     {
-        $contests = Participant::whereHas('contest', function($query)
+        $contests = Participant::with('contest')->whereHas('contest', function($query)
         {
           $query->where('user_id', Auth::user()->id);
         })->get();
+        return response()->json($contests);
+    }
+
+    public function myCommitteeContest()
+    {
+        $contests = Contest::where('id_committee', Auth::user()->id);
         return response()->json($contests);
     }
 

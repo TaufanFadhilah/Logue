@@ -35,13 +35,14 @@ Route::group(['middleware' => 'auth:api'], function(){
 
   // CONTESTS ROUTES
   // Route::resource('contest','API\ContestController');
-  Route::get('contest', 'API\ContestController@all');
+  Route::get('contest', 'API\ContestController@index');
   Route::post('contest', 'API\ContestController@store');
   Route::get('contest/{contest}', 'API\ContestController@show');
   Route::post('updateContest', 'API\ContestController@update');
   Route::get('deleteContest/{contest}', 'API\ContestController@destroy');
   Route::post('timeline','API\ContestController@updateTimeline')->name('contest.timeline');
   Route::get('mycontest','API\ContestController@myContest')->name('contest.mine');
+  Route::get('mycommitteecontest','API\ContestController@myCommitteeContest')->name('contest.committee.mine');
 
   // Participant Routes
   Route::get('join/{contest}', 'API\ContestController@join')->name('contest.join');
